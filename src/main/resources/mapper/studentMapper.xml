@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ymr.dao.StudentDao">
+    <resultMap id="studentBasicMap" type="com.ymr.model.Student">
+        <id column="student_id" property="id"/>
+        <result column="student_name" property="name"/>
+        <result column="student_password" property="password"/>
+        <result column="student_specialty" property="specialty"/>
+    </resultMap>
+
+    <resultMap id="studentWithLessonMap" type="com.ymr.model.Student" extends="studentBasicMap">
+        <collection property="lessons" ofType="com.ymr.model.Lesson">
+            <id column="lesson_id" property="id"/>
+            <result column="lesson_name" property="name"/>
+            <result column="weekday" property="weekday"/>
+            <result column="begin_time" property="beginTime"/>
+            <result column="end_time" property="endTime"/>
+            <result column="teacher_name" property="teacherName"/>
+        </collection>
+    </resultMap>
+
+    <select id="getStudentsByLesson" resultMap="studentBasicMap" parameterType="int">
+        SELECT student.* FROM student
+        INNER JOIN lesson_student ON student.student_id = lesson_student.student_id
+        WHERE lesson_student.lesson_id=#{lessonId}
+    </select>
+
+    <select id="getStudentById" resultMap="studentWithLessonMap" parameterType="int">
+        SELECT student.*,lesson.lesson_id,lesson.lesson_name,lesson.weekday,lesson.end_time,lesson.begin_time,teacher.teacher_name
+        FROM student
+        INNER JOIN lesson_student ON student.student_id = lesson_student.student_id
+        INNER JOIN lesson ON lesson_student.lesson_id = lesson.lesson_id
+        INNER JOIN teacher ON teacher.teacher_id=lesson.teacher_id
+        WHERE student.student_id=#{id}
+    </select>
+
+</mapper>

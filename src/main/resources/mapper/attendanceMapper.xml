@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ymr.dao.AttendanceDao">
+    <resultMap id="attendanceBasicMap" type="com.ymr.model.Attendance">
+        <result column="student_name" property="studentName"/>
+        <result column="student_id" property="studentId"/>
+        <result column="student_specialty" property="specialty"/>
+        <result column="lesson_id" property="lessonId"/>
+        <result column="attendance_time" property="attendTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="getAttendancesByLessonId" resultMap="attendanceBasicMap">
+        SELECT student.student_id,student.student_name,student.student_specialty,attendance.attendance_time,attendance.lesson_id
+        FROM student INNER JOIN attendance
+        ON attendance.student_id=student.student_id
+        WHERE attendance.lesson_id=#{lessonId,jdbcType=INTEGER}
+        AND attendance.attendance_time&gt;=#{attendanceDate,jdbcType=TIMESTAMP}
+        AND attendance.attendance_time&lt;=DATE_ADD(#{attendanceDate,jdbcType=TIMESTAMP},INTERVAL 1 DAY)
+    </select>
+    <insert id="addAttendance">
+        INSERT INTO attendance
+        VALUES (#{lessonId,jdbcType=INTEGER},#{studentId,jdbcType=INTEGER},#{attendTime,jdbcType=TIMESTAMP})
+    </insert>
+</mapper>

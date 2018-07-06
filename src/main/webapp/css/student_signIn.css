@@ -1,0 +1,121 @@
+body{
+    font-size: 1em;
+    font-family: "Microsoft YaHei", serif;
+    color: #535353;
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color:#374782;
+}
+input{
+    outline: none;
+}
+.lesson{
+    text-align: center;
+    color: Blue;
+    font-size: 1.3em;
+}
+#sign{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url("../images/bj.png") no-repeat;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.35;
+}
+#wrong{
+    text-align: center;
+    font-size: 1em;
+    color: red;
+}
+.sign_bg{
+    width:100%;
+    min-height: 100%;
+    text-align: center;
+    background: #e0ebf4;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#logo{
+    margin: 9% auto;
+    width: 30.25%;
+}
+img{
+    width: 100%;
+}
+form{
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
+form div.name,form div.number{
+    border: 1px solid #c1c1c1;
+    padding:3.5% 0 4% 3%;
+    height: 22%;
+    background: #ffffff;
+}
+form div.number{
+    border-bottom:0;
+    -webkit-border-top-left-radius: 0.45em;
+    -webkit-border-top-right-radius: 0.45em;
+    -moz-border-radius-topleft: 0.45em;
+    -moz-border-radius-topright: 0.45em;
+    border-top-left-radius: 0.45em;
+    border-top-right-radius: 0.45em;
+}
+form div.specialty,form div.name{
+    border-bottom:0;
+    -webkit-border-bottom-left-radius: 0.45em;
+    -webkit-border-bottom-right-radius: 0.45em;
+    -moz-border-radius-bottomleft: 0.45em;
+    -moz-border-radius-bottomright: 0.45em;
+    border-bottom-left-radius: 0.45em;
+    border-bottom-right-radius: 0.45em;
+}
+form div.name input,form div.number input{
+    width: 68%;
+    height: 80%;
+    border:none;
+    background: transparent;
+    font-size: 1em;
+    font-family: "Microsoft YaHei", serif;
+    color: #b3b3b3;
+    letter-spacing: 1px;
+    padding-left: 2px;
+}
+.choose_box{
+    height: 5em;
+    line-height: 5em;
+    padding: 0 5px;
+}
+.choose_box div{
+    float: left;
+}
+.choose_box a{
+    float: right;
+    text-align: end;
+}
+.signIn_btn{
+    width: 100%;
+    display: block;
+    padding:3% 0 ;
+    background: #ffffff;
+    border: 0;
+    font-size: 1em;
+    font-family: "Microsoft YaHei", serif;
+    color:#374782;
+    -webkit-box-shadow: #8f9bad 0 0 20px;
+    -moz-box-shadow: #8f9bad 0 0 20px;
+    box-shadow: #8f9bad 0 0 20px;
+    text-align: center;
+}
